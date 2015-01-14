@@ -9,9 +9,15 @@
  */
 angular.module('sdtlApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    $scope.tasks = [
+      {
+        name: 'Get first thing done.'
+      },
+      {
+        name: 'Get second thing done.'
+      },
+      {
+        name: 'Get third thing done.'
+      }
     ];
   });
