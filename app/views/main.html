@@ -1,5 +1,21 @@
-<h1>Tasks</h1>
+<!--<h1>Tasks</h1>-->
 
-<div ng-repeat="task in tasks">
-  {{task.name}}
-</div>
+<!--<div ng-repeat="task in tasks">-->
+<!--  {{task.name}}-->
+<!--</div>-->
+<ul>
+  <li ng-repeat="task in tasks">
+  <!-- exit a task -->
+  <input ng-model="task.text" ng-change="tasks.$save(task)" />
+
+  <!-- delete task -->
+  <button ng-click="tasks.$remove(task)">X</button>
+
+  </li>
+</ul>
+
+<!-- push a new task into the array -->
+<form ng-submit="addTask(newTaskText)">
+  <input ng-model="newTaskText" />
+  <button type="submit">add task</button>
+</form>

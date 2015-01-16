@@ -11,7 +11,8 @@
 angular
   .module('sdtlApp', [
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
