@@ -10,7 +10,7 @@
 angular.module('sdtlApp')
   .controller('MainCtrl', function ($scope, $firebase) {
 
-    var ref = new Firebase("https://brilliant-torch-8296.firebaseio.com/tasks");
+    var ref = new Firebase("https://sdtl.firebaseio.com/tasks");
 
     // create an AngularFire reference to the data
     var sync = $firebase(ref);
@@ -25,7 +25,17 @@ angular.module('sdtlApp')
     $scope.addTask = function(text) {
       $scope.tasks.$add({
         text: text,
-        createdAt: timeNow()
+        createdAt: timeNow(),
+        timeDiff: 0
       });
     };
+
+    $scope.timeDiff = function(task) {
+      return timeNow() - task.createdAt;
+    };
+
+    $scope.isExpired = function (task) {
+      return 604800000 < $scope.timeDiff(task.createdAt);
+    }
+
   });

@@ -5,8 +5,11 @@
 <!--</div>-->
 <ul>
   <li ng-repeat="task in tasks">
+  
   <!-- exit a task -->
   <input ng-model="task.text" ng-change="tasks.$save(task)" />
+
+  {{timeDiff(task)}}
 
   <!-- delete task -->
   <button ng-click="tasks.$remove(task)">X</button>
