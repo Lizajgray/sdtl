@@ -3,9 +3,23 @@
 <!--<div ng-repeat="task in tasks">-->
 <!--  {{task.name}}-->
 <!--</div>-->
+<h2>Current Tasks</h2>
 <ul>
-  <li ng-repeat="task in tasks">
-  
+  <li ng-repeat="task in tasks | expired:true">
+  <!-- exit a task -->
+  <input ng-model="task.text" ng-change="tasks.$save(task)" />
+
+  {{timeDiff(task)}}
+
+  <!-- delete task -->
+  <button ng-click="tasks.$remove(task)">X</button>
+
+  </li>
+</ul>
+
+<h2>Expired Tasks</h2>
+<ul>
+  <li ng-repeat="task in tasks | expired">
   <!-- exit a task -->
   <input ng-model="task.text" ng-change="tasks.$save(task)" />
 
