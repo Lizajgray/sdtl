@@ -22,12 +22,23 @@ angular.module('sdtlApp')
     // download the data into a local object
     $scope.tasks = sync.$asArray();
 
-    $scope.addTask = function(text) {
+    $scope.addTask = function(text, priority) {
+
       $scope.tasks.$add({
         text: text,
-        createdAt: timeNow(),
-        timeDiff: 0
+        priority: priority,
+        createdAt: new Date().getTime(),
+        timeDiff: 0,
+        isComplete: false
+      }).then(function () {
+        $scope.newTaskText = '';
       });
+      
+    };
+
+    $scope.completeTask = function(task) {
+      task.isComplete = true;
+      $scope.tasks.$save(task);
     };
 
     $scope.timeDiff = function(task) {
